@@ -1,0 +1,91 @@
+/* Define las variables CSS para los colores de los botones */
+:root {
+    --color-home: #000; /* Negro */
+    --color-about: #800080; /* Púrpura */
+    --color-retos: #ff00ff; /* Magenta */
+    --color-editor: #00ffff; /* Cian */
+  }
+  
+  header {
+    /* Usa un gradiente de fondo que va desde el blanco hasta el color del botón */
+    background-image: linear-gradient(
+      to right,
+      white,
+      var(--color-button, gray)
+    );
+    color: #333;
+    display: flex;
+    justify-content: space-between; /* Alinea el logo a la izquierda y los botones a la derecha */
+    align-items: center;
+    padding: 10px 50px;
+  }
+  
+  .logo {
+    /* Puedes usar una imagen o un texto para el logo */
+    width: 100px; /* Ajusta el ancho según el tamaño de tu imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+  }
+  
+  button {
+    background-color: transparent;
+    color: #fff; /* Cambia el color del texto a blanco */
+    border-radius: 5px; /* Agrega bordes redondeados */
+    border-width: 3px; /* Agrega un grosor al borde */
+    border-style: solid; /* Agrega un estilo sólido al borde */
+    border-color: #fff; /* Cambia el color del borde a blanco */
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: all 0.3s ease; /* Agrega una transición suave a los cambios de estilo */
+  }
+  
+  /* Agrega una clase para cada botón con un color diferente */
+  .home {
+    --color-button: var(--color-home); /* Usa una variable CSS para el color del botón */
+  }
+  
+  .about {
+    --color-button: var(--color-about);
+  }
+  
+  .retos {
+    --color-button: var(--color-retos);
+  }
+  
+  .editor {
+    --color-button: var(--color-editor);
+  }
+  
+  /* Agrega una regla para los botones cuando se pasa el mouse por encima */
+  button:hover {
+    background-color: var(--color-button); /* Cambia el color de fondo al de la variable */
+    filter: brightness(150%); /* Agrega un efecto de brillo al botón */
+  }
+  
+  /* Agrega una regla para los botones cuando se hace clic */
+  button:focus {
+     /* Crea una animación para el borde del botón */
+     animation-name: border-animation;
+     animation-duration: .5s;
+     animation-fill-mode:both;
+     header { 
+       filter: blur(5px); /* Agrega un efecto de desenfoque al fondo del header */
+     }
+  }
+  
+  /* Define la animación para el borde del botón */
+  @keyframes border-animation {
+     from {
+       /* El borde empieza con el mismo tamaño que el botón */
+       border-top-width : calc(100% - (100% - (3px *2)) /2);
+       border-right-width : calc(100% - (100% - (3px *2)) /2);
+       border-bottom-width : calc(100% - (100% - (3px *2)) /2);
+       border-left-width : calc(100% - (100% - (3px *2)) /2);
+     }
+     to {
+       /* El borde termina con el tamaño mínimo */
+       border-top-width : 3px;
+       border-right-width : 3px;
+       border-bottom-width : 3px;
+       border-left-width : 3px;
+     }
+  }
